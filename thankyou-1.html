@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Thank You — LearnedMine</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Cormorant+Garamond:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --black: #080808;
+    --gold: #C9A84C;
+    --gold-light: #E8C97A;
+    --gold-dim: #7A622A;
+    --white: #F5F0E8;
+    --gray2: #2A2A2A;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'Cormorant Garamond', serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 40px 20px;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 0%, #1a1200 0%, var(--black) 60%);
+  }
+  .container {
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid var(--gold-dim);
+    padding: 60px 40px;
+    position: relative;
+    animation: fadeUp 1s forwards;
+  }
+  .container::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%);
+    width: 200px; height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  }
+  .check-circle {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 30px;
+    font-size: 32px;
+    color: var(--gold);
+    background: rgba(201,168,76,0.06);
+    animation: pulse 2s infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.3); }
+    50% { box-shadow: 0 0 0 16px rgba(201,168,76,0); }
+  }
+  .badge {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    padding: 6px 18px;
+    margin-bottom: 24px;
+    font-weight: 700;
+  }
+  h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 6vw, 52px);
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 16px;
+  }
+  h1 span { color: var(--gold); font-style: italic; }
+  .sub {
+    font-size: 19px;
+    color: #a09070;
+    font-weight: 300;
+    line-height: 1.7;
+    margin-bottom: 40px;
+  }
+  .divider {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 36px;
+  }
+  .divider-line { flex: 1; height: 1px; background: var(--gray2); }
+  .divider-diamond {
+    width: 8px; height: 8px;
+    background: var(--gold);
+    transform: rotate(45deg);
+    flex-shrink: 0;
+  }
+  .download-btn {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--black);
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 22px 48px;
+    text-decoration: none;
+    width: 100%;
+    max-width: 440px;
+    transition: all 0.3s;
+    margin-bottom: 12px;
+    animation: glow 2.5s infinite;
+  }
+  .download-btn:hover {
+    background: var(--gold-light);
+    transform: translateY(-3px);
+    box-shadow: 0 16px 48px rgba(201,168,76,0.4);
+  }
+  @keyframes glow {
+    0%, 100% { box-shadow: 0 0 0 0 rgba(201,168,76,0.3); }
+    50% { box-shadow: 0 0 28px 6px rgba(201,168,76,0.15); }
+  }
+  .download-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: var(--gold-dim);
+    letter-spacing: 2px;
+    margin-bottom: 40px;
+  }
+  .steps {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 40px;
+    text-align: left;
+  }
+  .step {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    padding: 20px 24px;
+    border: 1px solid var(--gray2);
+    position: relative;
+  }
+  .step::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--gold);
+  }
+  .step-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--gold);
+    line-height: 1;
+    flex-shrink: 0;
+    opacity: 0.4;
+  }
+  .step-content h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    margin-bottom: 6px;
+    color: var(--white);
+  }
+  .step-content p { font-size: 15px; color: #888; line-height: 1.6; }
+  .step-content a { color: var(--gold); text-decoration: none; }
+  .back-btn {
+    background: transparent;
+    border: 1px solid var(--gray2);
+    color: var(--gold-dim);
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 14px 36px;
+    transition: all 0.3s;
+    text-decoration: none;
+    display: inline-block;
+  }
+  .back-btn:hover { border-color: var(--gold); color: var(--gold); }
+  .logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 16px;
+    color: var(--gold-dim);
+    margin-top: 48px;
+  }
+  .founder {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px;
+    color: #333;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @media (max-width: 500px) { .container { padding: 40px 20px; } }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="check-circle">✦</div>
+  <div class="badge">Payment Confirmed</div>
+
+  <h1>You Just Made<br><span>The Right Choice</span></h1>
+  <p class="sub">Your investment in yourself is confirmed. Download your personalised 90-Day Transformation Roadmap below — instantly, right now.</p>
+
+  <div class="divider">
+    <div class="divider-line"></div>
+    <div class="divider-diamond"></div>
+    <div class="divider-line"></div>
+  </div>
+
+  <a href="https://self-authorization.vercel.app/learnedmine_roadmap.pdf"
+     download="LearnedMine_90Day_Roadmap.pdf"
+     class="download-btn">
+    ⬇ &nbsp; Download Your Roadmap Now
+  </a>
+  <p class="download-note">◆ &nbsp; PDF · Instant Download · 90-Day Plan &nbsp; ◆</p>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">01</div>
+      <div class="step-content">
+        <h3>Download Your Roadmap</h3>
+        <p>Click the gold button above to download your full 90-day personalised transformation plan. Save it to your phone or computer. It is yours forever.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">02</div>
+      <div class="step-content">
+        <h3>Start Tomorrow Morning</h3>
+        <p>Open your roadmap tonight. Read Section 1. Tomorrow morning begin Day 1 of your morning protocol. The first 30 days will change everything.</p>
+      </div>
+    </div>
+    <div class="step">
+      <div class="step-num">03</div>
+      <div class="step-content">
+        <h3>Questions or Issues?</h3>
+        <p>Contact Moses directly at <a href="mailto:learnedmine@gmail.com">learnedmine@gmail.com</a> — responses within 24 hours. You are backed by a <strong style="color:#C9A84C">7-day money-back guarantee</strong>.</p>
+      </div>
+    </div>
+  </div>
+
+  <a href="https://self-authorization.vercel.app/" class="back-btn">← Back to LearnedMine</a>
+
+  <div class="logo">LearnedMine</div>
+  <div class="founder">Founded by Moses Lugalia · © 2025</div>
+
+</div>
+</body>
+</html>
